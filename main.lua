@@ -16,6 +16,8 @@ function love.load()
     Font = love.graphics.newImageFont("graphics/font.png", "abcdefghijklmnopqrstuvwxyz 0123456789.,:=+%*-()/\\|<>'_£@!?", 1)
     love.graphics.setFont(Font)
 
+    Marioimg = love.graphics.newImage("graphics/mario.png")
+
     Screen:changeState("test", {"none", 0, {0,0,0}}, {"fade", 0.25, {0,0,0}})
 end
 
