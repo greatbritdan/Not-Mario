@@ -3,12 +3,11 @@ function love.load()
 	if lversion < "00.11.40" then
 		error("You have an outdated version of Love! Get 0.11.4 or higher and retry.")
 	end
-    
+
     Env = require("env")
     Var = require("variables")
     Class = require("libs.middleclass")
     Screen = require("libs.BT_Screen")
-    UI = require("libs.BT_UI")
 
     love.graphics.setDefaultFilter("nearest")
     love.graphics.setLineStyle("rough")
