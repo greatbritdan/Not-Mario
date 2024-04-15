@@ -8,6 +8,7 @@ function love.load()
     Var = require("variables")
     Class = require("libs.middleclass")
     Screen = require("libs.BT_Screen")
+    Bf = require("libs.breezefield")
 
     love.graphics.setDefaultFilter("nearest")
     love.graphics.setLineStyle("rough")
