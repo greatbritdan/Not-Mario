@@ -17,6 +17,10 @@ function love.load()
     love.graphics.setFont(Font)
 
     Marioimg = love.graphics.newImage("graphics/mario.png")
+    Marioquads = {}
+    for x = 1, 4 do
+        Marioquads[x] = love.graphics.newQuad((x-1)*20, 0, 20, 40, 80, 40)
+    end
 
     Screen:changeState("test", {"none", 0, {0,0,0}}, {"fade", 0.25, {0,0,0}})
 end
@@ -72,6 +76,11 @@ function love.textinput(text)
 end
 
 --
+
+function PointWithinCircle(x, y, centerX, centerY, radius)
+    local distance = math.sqrt((x - centerX)^2 + (y - centerY)^2)
+    return distance <= radius
+end
 
 function Round(n, deci)
     deci = 10^(deci or 0)

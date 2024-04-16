@@ -6,5 +6,10 @@ return {
 
     showfps = true,
     showdrawcalls = true,
-    showcursor = true
+    showcursor = true,
+
+    settings = {
+        invertedMouse = false,
+        globalLaunch = false,
+    }
 }
