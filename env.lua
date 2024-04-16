@@ -10,6 +10,6 @@ return {
 
     settings = {
         invertedMouse = false,
-        globalLaunch = false,
+        globalLaunch = true,
     }
 }

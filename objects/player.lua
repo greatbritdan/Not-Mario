@@ -1,12 +1,13 @@
 PlayerOBJ = Class("Player")
 
-function PlayerOBJ:initialize()
-    self.x, self.y = 128, 120
+function PlayerOBJ:initialize(x,y)
     self:setSize(1)
-    self.grabbed = false
-    
-    self.collider = Bf.Collider.new(World,"rect",self.x,self.y,self.w,self.h)
+    self.x, self.y = (x-0.5)*16, (y-(self.h/32))*16
+
+    self.collider = World:newCollider("rect",{self.x,self.y,self.w,self.h})
     self.collider:setFriction(0.8)
+
+    self.grabbed = false
 end
 
 function PlayerOBJ:update(dt)
@@ -21,11 +22,13 @@ function PlayerOBJ:update(dt)
 end
 
 function PlayerOBJ:draw()
+    --love.graphics.circle("line",self.x,self.y,self.grabRadius)
+
     local x, y = (love.mouse.getX()/Env.scale), (love.mouse.getY()/Env.scale)
-    love.graphics.circle("line",self.x,self.y,self.grabRadius)
     if self.grabbed then
         love.graphics.line(self.grabbed.x,self.grabbed.y,x+ScrollX,y)
     end
+
     love.graphics.draw(Marioimg,Marioquads[2+self.size],self.x,self.y,self.r,1,1,10,20)
 end
 
@@ -58,5 +61,11 @@ function PlayerOBJ:setSize(size)
     else
         self.w, self.h = 12, 24
         self.grabRadius = 16
+    end
+
+    if self.collider then
+        self.collider:destroy()
+        self.collider = World:newCollider("rect",{self.x,self.y,self.w,self.h})
+        self.collider:setFriction(0.8)
     end
 end

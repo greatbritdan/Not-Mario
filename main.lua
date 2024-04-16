@@ -22,6 +22,12 @@ function love.load()
         Marioquads[x] = love.graphics.newQuad((x-1)*20, 0, 20, 40, 80, 40)
     end
 
+    Tilesimg = love.graphics.newImage("graphics/tiles.png")
+    Tilequads = {}
+    for x = 1, 2 do
+        Tilequads[x] = love.graphics.newQuad((x-1)*16, 0, 16, 16, 32, 16)
+    end
+
     Screen:changeState("test", {"none", 0, {0,0,0}}, {"fade", 0.25, {0,0,0}})
 end
 
