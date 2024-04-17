@@ -16,7 +16,6 @@ function GroundOBJ:initialize(x,y,w,h)
 end
 
 function GroundOBJ:draw()
-    love.graphics.polygon("line", self.collider:getWorldPoints(self.collider:getPoints()))
-
     love.graphics.draw(self.batch,self.x-(self.w/2),self.y-(self.h/2))
+    love.graphics.polygon("line", self.collider:getWorldPoints(self.collider:getPoints()))
 end

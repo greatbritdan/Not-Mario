@@ -22,14 +22,13 @@ function PlayerOBJ:update(dt)
 end
 
 function PlayerOBJ:draw()
-    --love.graphics.circle("line",self.x,self.y,self.grabRadius)
-
     local x, y = (love.mouse.getX()/Env.scale), (love.mouse.getY()/Env.scale)
     if self.grabbed then
         love.graphics.line(self.grabbed.x,self.grabbed.y,x+ScrollX,y)
     end
 
     love.graphics.draw(Marioimg,Marioquads[2+self.size],self.x,self.y,self.r,1,1,10,20)
+    love.graphics.polygon("line", self.collider:getWorldPoints(self.collider:getPoints()))
 end
 
 function PlayerOBJ:mousepressed(x,y)
