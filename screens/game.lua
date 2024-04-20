@@ -36,4 +36,11 @@ function screen.mousereleased(x,y,b)
     end
 end
 
+function screen.keypressed(k)
+    if k == "f1" then
+        Screen:changeState("editor", {"fade", 0.25, {0,0,0}}, {"fade", 0.25, {0,0,0}})
+    end
+end
+
+
 return screen

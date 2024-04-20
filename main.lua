@@ -11,6 +11,7 @@ function love.load()
     Bf = require("libs.breezefield")
 
     require("systems")
+    require("objects.editor.object")
     require("objects.ground")
     require("objects.player")
 
@@ -28,16 +29,17 @@ function love.load()
 
     Tilesimg = love.graphics.newImage("graphics/tiles.png")
     Tilequads = {}
-    for x = 1, 2 do
-        Tilequads[x] = love.graphics.newQuad((x-1)*16, 0, 16, 16, 32, 16)
+    for x = 1, 6 do
+        Tilequads[x] = love.graphics.newQuad((x-1)*16, 0, 16, 16, 96, 16)
     end
 
     LEVEL = {
         {t="player",x=3,y=13},
-        {t="ground",x=1,y=14,w=32,h=2,q=1}
+        {t="ground",x=1,y=14,w=16,h=2,q=1},
+        {t="ground",x=17,y=14,w=16,h=2,q=1}
     }
 
-    Screen:changeState("game", {"none", 0, {0,0,0}}, {"fade", 0.25, {0,0,0}})
+    Screen:changeState("editor", {"none", 0, {0,0,0}}, {"fade", 0.25, {0,0,0}})
 end
 
 function love.update(dt)
@@ -106,7 +108,7 @@ function AABB(ax, ay, awidth, aheight, bx, by, bwidth, bheight)
 	return ax+awidth > bx and ax < bx+bwidth and ay+aheight > by and ay < by+bheight
 end
 
-function Tablecontains(table, name)
+function TableContains(table, name)
     for i = 1, #table do
         if table[i] == name then
             return i
